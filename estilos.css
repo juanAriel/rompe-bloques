@@ -11,8 +11,9 @@
     margin: 3rem auto;
 }
 .bloque{
-    height: 20px;
-    width: 100px;
-    background-color: dodgerblue;
-    position: absolute;
+    
+    height:20px;
+    width:100px;
+    background-color:dodgerblue;
+    position:absolute;
 }
