@@ -7,6 +7,9 @@ const anchoBloque=100;
 //dibujar posicion de usuario
  const posicionInicialUsuario=[230,10]
  let posicionActualUsuario=posicionInicialUsuario
+ //definir posocion de la bola
+ const posicionInicialBola=[270,40]
+ let posicionActualBola=posicionInicialBola
 //definicion de medidas
 class Bloque{
     constructor(ejeX, ejeY){
@@ -79,3 +82,14 @@ function moverUsuario(e){
 }
 //añadir un evento escuchador para el documento
 document.addEventListener('keydown', moverUsuario)
+
+//dibujar la bola del game
+function dibujarBola(){
+    bola.style.left= posicionActualBola[0]+'px'
+    bola.style.bottom= posicionActualBola[1]+ 'px'
+
+}
+const bola=document.createElement('div')
+bola.classList.add('bola')
+contenedor.appendChild(bola)
+dibujarBola()
