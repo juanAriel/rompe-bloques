@@ -1,10 +1,12 @@
 const contenedor = document.querySelector('.contenedor')
 const altoTablero=300;
 const anchoTable=570;
-
 const altoBloque=20;
 const anchoBloque=100;
- 
+
+//dibujar posicion de usuario
+ const posicionInicialUsuario=[230,10]
+ let posicionActualUsuario=posicionInicialUsuario
 //definicion de medidas
 class Bloque{
     constructor(ejeX, ejeY){
@@ -46,4 +48,15 @@ function addBloques(){
     }
 
 }
+//añadir los bloques al juego
 addBloques()
+
+function dibujarUsuario(){
+    usuario.style.left=posicionActualUsuario[0]+'px'
+    usuario.style.bottom=posicionActualUsuario[1]+'px'
+}
+//añadir al usuario
+const usuario = document.createElement('div')
+usuario.classList.add('usuario')
+contenedor.appendChild(usuario)
+dibujarUsuario()
