@@ -10,6 +10,12 @@ const anchoBloque=100;
  //definir posocion de la bola
  const posicionInicialBola=[270,40]
  let posicionActualBola=posicionInicialBola
+ //definicion particularidad de la bola
+ let xDireccionBola= 2
+ let yDireccionBola = 2
+let diametro=20
+// definir timer funcion que se ejecuta cada x tiempo
+let timerID
 //definicion de medidas
 class Bloque{
     constructor(ejeX, ejeY){
@@ -93,3 +99,46 @@ const bola=document.createElement('div')
 bola.classList.add('bola')
 contenedor.appendChild(bola)
 dibujarBola()
+//funcion mover bola
+function moverBola(){
+    posicionActualBola[0] += xDireccionBola
+    posicionActualBola[1] += yDireccionBola
+    dibujarBola()
+    revisarColisiones()
+}
+
+timerId=setInterval(moverBola, 20 )
+//funcion reviarcoliciones
+
+function revisarColisiones(){
+    //colisiones con las paredes
+    if(
+        posicionActualBola[0] >= (anchoTable - diametro) ||
+        posicionActualBola[1] >= (altoTablero - diametro) ||
+        posicionActualBola[0] <= 0 ||
+        posicionActualBola[1] <= 0
+    ){
+        cambiarDireccion()
+    }
+    
+}
+
+//funcion de cambiar de direccion 
+function cambiarDireccion(){
+    if(xDireccionBola === 2 && yDireccionBola === 2){
+        yDireccionBola = -2
+        return
+    }
+    if(xDireccionBola === 2 && yDireccionBola === -2){
+        xDireccionBola = -2
+        return
+    }
+    if(xDireccionBola === -2 && yDireccionBola === -2){
+        yDireccionBola = 2
+        return
+    }
+    if(xDireccionBola === -2 && yDireccionBola === 2){
+        xDireccionBola = 2
+        return
+    }
+}
