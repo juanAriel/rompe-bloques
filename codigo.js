@@ -60,3 +60,22 @@ const usuario = document.createElement('div')
 usuario.classList.add('usuario')
 contenedor.appendChild(usuario)
 dibujarUsuario()
+
+//funcion mover usuario
+function moverUsuario(e){
+    switch(e.key){
+        case 'ArrowLeft':
+            if(posicionActualUsuario[0]>0){
+                posicionActualUsuario[0] -=10
+                dibujarUsuario()
+            }
+            break
+        case 'ArrowRight':
+            if(posicionActualUsuario[0]<(anchoTable - anchoBloque)){
+                posicionActualUsuario[0] +=10
+                dibujarUsuario()
+            }
+    }
+}
+//añadir un evento escuchador para el documento
+document.addEventListener('keydown', moverUsuario)
