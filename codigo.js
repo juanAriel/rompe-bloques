@@ -111,6 +111,17 @@ timerId=setInterval(moverBola, 20 )
 //funcion reviarcoliciones
 
 function revisarColisiones(){
+    //collisiones con bloques
+    for(let i = 0 ; i < bloques.length; i++){
+        if( ( posicionActualBola[0] > bloques[i].bottomLeft[0] && posicionActualBola[0] < bloques[i].bottomRigth[0]) &&
+        ((posicionActualBola[1]+ diametro)>bloques[i].bottomLeft[1] && posicionActualBola[1]< bloques[i].topLetf[1])){
+            const todosLosBloques =Array.from(document.querySelectorAll('.bloque'))
+            todosLosBloques[i].classList.remove('bloque')
+            bloques.splice(i,1)
+            cambiarDireccion()
+        }
+
+    }
     //colisiones con las paredes
     if(
         posicionActualBola[0] >= (anchoTable - diametro) ||
